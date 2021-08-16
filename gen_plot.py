@@ -98,6 +98,7 @@ class csvPlotter:
         self.dark_green = self.normalize_color((30, 130, 76))
         self.green = self.normalize_color((0, 230, 64))
         self.grey = self.normalize_color((46, 49, 49))
+        self.light_grey = self.normalize_color((149, 165, 166))
         self.navy = self.normalize_color((34, 40, 54))
         self.orange = self.normalize_color((255, 171, 53))
         self.purple = self.normalize_color((154, 18, 179))
@@ -127,9 +128,9 @@ class csvPlotter:
         research = 0
         for t in self.data.research_timers():
             research = research + t.duration
-        pause = 0
-        for t in self.data.pause_timers():
-            pause = pause + t.duration
+        # pause = 0
+        # for t in self.data.pause_timers():
+        #     pause = pause + t.duration
         other = 0
         for t in self.data.other_timers():
             other = other + t.duration
@@ -140,12 +141,12 @@ class csvPlotter:
         self.logger.debug("Pie Chart - Setting plot formatting.")
         title = "Project Shares"
         titleprops = {'fontsize':self.font_size * 1.4, 'color': self.fg_color}
-        labels = "Lehre", "Projekt", "Forschung", "Pause", "Andere"
-        sizes = [teaching, project, research, pause, other]
-        colors = [self.blue, self.orange, self.dark_green, self.red, self.grey]
+        labels = "Teaching", "Project", "Research", "Other"
+        sizes = [teaching, project, research, other]
+        colors = [self.blue, self.orange, self.dark_green, self.light_grey]
         startangle = 90
         radius = 3
-        explode = (0, 0, 0, 0, 0)
+        explode = (0, 0, 0, 0)
         textprops= {'color':self.fg_color, 'size':self.font_size}
         wedgeprops = {'linewidth': 1, 'linestyle':'-', 'edgecolor':self.fg_color}
 
